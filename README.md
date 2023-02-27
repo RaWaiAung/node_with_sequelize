@@ -80,3 +80,17 @@ sourceKey: 'name',
 targetKey: 'wardrobe'
 });
 
+lazy loading
+-----------
+
+. The lazy loading method will load the associations per query as they are called upon from the code
+
+A good use case for lazy loading would be querying related data conditionally
+
+Eager loading
+-------------
+
+eager loading, you would load all of the associated data at once.
+
+you would use this form of loading when you have a lot of associations or a lot of rows returned from the main table.
+
