@@ -1,10 +1,18 @@
 • HasOne – the foreign key references the child model. The attribute is defined on the parent model.
+
 • BelongsTo – the foreign key references the parent model. The attribute is defined on the child model.
+
 • HasMany – where the foreign key references the parent model. The attribute is defined on the child model.
+
 • BelongsToMany – where a separate model (called a junction table) will store the references of the associated models.
 
+How use it
+------------
+
 • One-to-One – We would use the hasOne and belongsTo associations together.
+
 • One-to-Many – The hasMany and belongsTo associations are used for this pattern.
+
 • Many-to-Many – Two belongsToMany associations are used for this pattern.
 
 A.hasOne(B, {
