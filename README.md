@@ -33,3 +33,42 @@ Employees can work on multiple tasks and tasks can require many employees:
 
 Employee.belongsToMany(Task, { through: 'EmployeeTasks' });
 Task.belongsToMany(Employee, { through: 'EmployeeTasks' });
+
+Using hasOne
+------------
+The following code will create an attribute called actorName on the Roles model,
+
+Actor.hasOne(Role, {
+sourceKey: 'name',
+foreignKey: 'actorName'
+});
+
+Using hasMany
+----------------
+The following code will create an attribute called roleTitle on the Costumes model
+
+Roles.hasMany(Costumes, {
+sourceKey: 'title',
+foreignKey: 'roleTitle'
+});
+
+Using belongsTo
+--------------
+referencing from the source model
+
+Roles.belongsTo(Actors, {
+targetKey: 'name',
+foreignKey: 'actorName'
+});
+
+Using belongsToMany
+-------------------
+
+accepts both the target and the source keys as parameters to configure the references.
+
+Costumes.belongsToMany(Actors, {
+through: 'actor_costumes',
+sourceKey: 'name',
+targetKey: 'wardrobe'
+});
+
