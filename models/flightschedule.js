@@ -1,22 +1,22 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class FlightSchedule extends Model {
     static associate(models) {
-      this.Airplane = this.belongsTo(models['Airplane']);
-      this.BoardingTickets = this.
-        hasMany(models['BoardingTicket']);
+      this.Airplane = this.belongsTo(models["Airplane"]);
+      this.BoardingTickets = this.hasMany(models["BoardingTicket"]);
     }
   }
-  FlightSchedule.init({
-    originAirport: DataTypes.STRING,
-    destinationAirport: DataTypes.STRING,
-    departureTime: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'FlightSchedule',
-  });
+  FlightSchedule.init(
+    {
+      originAirport: DataTypes.STRING,
+      destinationAirport: DataTypes.STRING,
+      departureTime: DataTypes.DATE,
+    },
+    {
+      sequelize,
+      modelName: "FlightSchedule",
+    }
+  );
   return FlightSchedule;
 };
