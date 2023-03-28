@@ -8,13 +8,19 @@ module.exports = (sequelize, DataTypes) => {
   }
   Airplane.init(
     {
-      planeModel: DataTypes.STRING,
-      totalSeats: DataTypes.INTEGER,
-      totalPassengers: DataTypes.INTEGER,
+      planeModel: {
+        type: DataTypes.STRING,
+      },
+      totalSeats: {
+        type: DataTypes.INTEGER,
+      },
+      totalPassengers: {
+        type: DataTypes.INTEGER,
+      },
     },
     {
       sequelize,
-      freezeTableName: true
+      freezeTableName: true,
     }
   );
   return Airplane;

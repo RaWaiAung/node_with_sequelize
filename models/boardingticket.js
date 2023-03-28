@@ -9,12 +9,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   BoardingTicket.init(
     {
-      seat: DataTypes.STRING,
-      seatNum: DataTypes.INTEGER,
+      seat: {
+        type: DataTypes.STRING,
+      },
+      seatNum: {
+        type: DataTypes.INTEGER,
+      },
     },
     {
       sequelize,
-      freezeTableName: true
+      freezeTableName: true,
     }
   );
   return BoardingTicket;

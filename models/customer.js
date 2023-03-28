@@ -8,12 +8,17 @@ module.exports = (sequelize, DataTypes) => {
   }
   Customer.init(
     {
-      name: DataTypes.STRING,
-      email: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+      },
+
+      email: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,
-      freezeTableName: true
+      freezeTableName: true,
     }
   );
   return Customer;

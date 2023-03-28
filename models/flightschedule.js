@@ -9,13 +9,19 @@ module.exports = (sequelize, DataTypes) => {
   }
   FlightSchedule.init(
     {
-      originAirport: DataTypes.STRING,
-      destinationAirport: DataTypes.STRING,
-      departureTime: DataTypes.DATE,
+      originAirport: {
+        type: DataTypes.STRING,
+      },
+      destinationAirport: {
+        type: DataTypes.STRING,
+      },
+      departureTime: {
+        type: DataTypes.DATE,
+      },
     },
     {
       sequelize,
-      freezeTableName: true
+      freezeTableName: true,
     }
   );
   return FlightSchedule;
