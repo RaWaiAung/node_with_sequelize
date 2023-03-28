@@ -13,10 +13,17 @@ models.sequelize
     console.log(" > there was an issue synchronizing the database", err);
   });
 app.get("/", async (req, res) => {
-  const result = await task.create({
-    job_title: "rawai",
-    status: true,
-  });
+  const result = await airplane
+    .create({
+      planeModel: "",
+      totalSeats: 0,
+    })
+    .then((data) => {
+      res.send({});
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
   res.send({ result });
 });
 

@@ -10,9 +10,20 @@ module.exports = (sequelize, DataTypes) => {
     {
       planeModel: {
         type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: 'Planes type should not empty'
+          }
+        }
       },
       totalSeats: {
         type: DataTypes.INTEGER,
+        validate: {
+          min: {
+            args: 1,
+            msg: 'A plane must have at least one seat'
+          }
+        }
       },
       totalPassengers: {
         type: DataTypes.INTEGER,
