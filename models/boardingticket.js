@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       seat: {
         type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: 'Please provide seat'
+          }
+        }
       },
       seatNum: {
         type: DataTypes.INTEGER,
