@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
       totalSeats: 0,
     })
     .then((data) => {
-      res.send({});
+      res.send({ data });
     })
     .catch((err) => {
       console.log(err.message);
