@@ -1,38 +1,24 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Airplane extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
-      this.FlightSchedules = this.hasMany(models.FlightSchedule);
+      this.FlightSchedule = this.hasMany(models.FlightSchedule);
     }
   }
-  Airplane.init(
-    {
-      planeModel: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            msg: 'Planes type should not empty'
-          }
-        }
-      },
-      totalSeats: {
-        type: DataTypes.INTEGER,
-        validate: {
-          min: {
-            args: 1,
-            msg: 'A plane must have at least one seat'
-          }
-        }
-      },
-      totalPassengers: {
-        type: DataTypes.INTEGER,
-      },
-    },
-    {
-      sequelize,
-      freezeTableName: true,
-    }
-  );
+  Airplane.init({
+    planeModel: DataTypes.STRING,
+    totalSeats: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'Airplane',
+  });
   return Airplane;
 };

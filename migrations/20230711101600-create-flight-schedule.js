@@ -2,21 +2,21 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('employeetasks', {
+    await queryInterface.createTable('FlightSchedules', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      EmployeeID: {
-        type: Sequelize.INTEGER
-      },
-      TaskID: {
-        type: Sequelize.INTEGER
-      },
-      desc: {
+      originAirport: {
         type: Sequelize.STRING
+      },
+      destinationAirport: {
+        type: Sequelize.STRING
+      },
+      departureTime: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -29,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('employeetasks');
+    await queryInterface.dropTable('FlightSchedules');
   }
 };

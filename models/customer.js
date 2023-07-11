@@ -2,32 +2,23 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
-      this.BoardingTickets = this.hasMany(models.BoardingTicket);
+      this.BoardingTicket = this.hasMany(models.BoardingTicket);
     }
   }
   Customer.init(
     {
-      name: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: true,
-          msg: 'Please Enter Your Name'
-        }
-      },
-
-      email: {
-        type: DataTypes.STRING,
-        unique: true,
-        validate: {
-          isEmail: true,
-          msg: 'Please provid valid email format'
-        }
-      },
+      name: DataTypes.STRING,
+      email: DataTypes.STRING,
     },
     {
       sequelize,
-      freezeTableName: true,
+      modelName: "Customer",
     }
   );
   return Customer;

@@ -1,28 +1,26 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class FlightSchedule extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
-      this.Airplane = this.belongsTo(models["Airplane"]);
-      this.BoardingTickets = this.hasMany(models["BoardingTicket"]);
+     this.Airplane = this.belongsTo(models['Airplane']);
+     this.BoardingTicket = this.hasMany(models['BoardingTicket']);
     }
   }
-  FlightSchedule.init(
-    {
-      originAirport: {
-        type: DataTypes.STRING,
-      },
-      destinationAirport: {
-        type: DataTypes.STRING,
-      },
-      departureTime: {
-        type: DataTypes.DATE,
-      },
-    },
-    {
-      sequelize,
-      freezeTableName: true,
-    }
-  );
+  FlightSchedule.init({
+    originAirport: DataTypes.STRING,
+    destinationAirport: DataTypes.STRING,
+    departureTime: DataTypes.DATE
+  }, {
+    sequelize,
+    modelName: 'FlightSchedule',
+  });
   return FlightSchedule;
 };
