@@ -14,7 +14,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   BoardingTicket.init(
     {
-      seat: DataTypes.STRING,
+      seat: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "Please enter in a valid seating arrangement",
+          },
+        },
+      },
     },
     {
       sequelize,

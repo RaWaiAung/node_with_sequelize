@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const allRouter = require("./routes/index");
 const models = require("./models");
-const employee = models.employee;
+const { ValidationError } = require("sequelize");
 const airplane = models.Airplane;
+const FlightSchedule = models.FlightSchedule;
+const employee = models.employee;
 const task = models.task;
 models.sequelize
   .sync()
@@ -17,18 +19,21 @@ models.sequelize
 app.use("/api/v1", allRouter);
 
 app.get("/", async (req, res) => {
-  const result = await airplane
-    .create({
-      planeModel: "",
-      totalSeats: 0,
-    })
-    .then((data) => {
-      res.send({ data });
-    })
-    .catch((err) => {
-      console.log(err.message);
+  try {
+    const result = await FlightSchedule.create({
+      originAirport: "JFK",
+      destinationAirport: "JFK",
+      departureTime: "2020-2-2",
+      AirplaneId: 1,
     });
-  res.send({ result });
+    if (result) {
+      res.send({ result });
+    }
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      console.log(error.errors);
+    }
+  }
 });
 
 app.listen(3000, function () {

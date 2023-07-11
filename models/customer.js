@@ -13,8 +13,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   Customer.init(
     {
-      name: DataTypes.STRING,
-      email: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: true,
+          msg: "A name is required for customer",
+        },
+      },
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: true,
+          msg: "Invalid email format for customer",
+        },
+      },
     },
     {
       sequelize,
