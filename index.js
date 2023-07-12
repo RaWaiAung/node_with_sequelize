@@ -22,9 +22,8 @@ app.get("/", async (req, res) => {
   try {
     const result = await FlightSchedule.create({
       originAirport: "JFK",
-      destinationAirport: "JFK",
+      destinationAirport: "MIA",
       departureTime: "2020-2-2",
-      AirplaneId: 1,
     });
     if (result) {
       res.send({ result });
